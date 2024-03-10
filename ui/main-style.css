@@ -1,12 +1,12 @@
 @font-face {
     font-family: SansSerif;
-    src: url("/bonemeal/src/assets/font/MinecraftRegular.otf") format("opentype");
+    src: url("font/MinecraftRegular.otf") format("opentype");
 }
 
 @font-face {
     font-family: SansSerif;
     font-weight: bold;
-    src: url("/bonemeal/src/assets/font/MinecraftBold.otf") format("opentype");
+    src: url("font/MinecraftBold.otf") format("opentype");
 }
 
 * {
@@ -60,7 +60,7 @@
     margin: auto;
     transition: 0.24s;
     position: relative;
-    background: url('/bonemeal/src/assets/bonemeal.gif') no-repeat;
+    background: url('bonemeal.gif') no-repeat;
     background-size:150px 150px;
 }
 .navbar2:hover{

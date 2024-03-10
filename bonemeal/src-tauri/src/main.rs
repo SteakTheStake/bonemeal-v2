@@ -11,7 +11,7 @@ use window_shadows::set_shadow;
 
 lazy_static! {
     pub static ref TEMPLATES: Tera = {
-        let mut tera = match Tera::new("../../ui/**/*") {
+        let mut tera = match Tera::new("../../ui/**/*.html") {
             Ok(t) => t,
             Err(e) => {
                 println!("Parsing error(s): {}", e);
@@ -32,7 +32,7 @@ fn do_nothing_filter(_value: &serde_json::Value, _args: &HashMap<String, serde_j
 }
 
 fn main() {
-    let tera = Tera::new("../../ui/**/*").unwrap();
+    let tera = Tera::new("../../ui/**/*.html").unwrap();
 
     // Define routes and their corresponding template files
     let routes = vec![

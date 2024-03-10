@@ -1,7 +1,7 @@
 {
   "name": "bonemeal",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1"
+    "@tauri-apps/api": "^1.5.3"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1",
