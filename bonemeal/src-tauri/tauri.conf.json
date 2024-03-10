@@ -1,0 +1,75 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "../ui",
+    "distDir": "../ui",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "bonemeal",
+    "version": "0.0.1"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "notification": {
+        "all": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true,
+        "center": true
+      }
+    },
+    "windows": [
+      {
+        "decorations": false,
+        "title": "bonemeal",
+        "url": "index.html",
+        "width": 2400,
+        "height": 2400,
+        "label": "main",
+        "fullscreen": false,
+        "resizable": true,
+        "transparent": true,
+        "center": true,
+        "maximizable": true,
+        "closable": true
+      }
+    ],
+    "macOSPrivateApi": true,
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.bonemeal.dev",
+      "icon": [
+        "icons/android-chrome-512x512.png",
+        "icons/favicon-32x32.png",
+        "icons/apple-touch-icon.png",
+        "icons/favicon.icns",
+        "icons/favicon.ico"
+      ],
+      "resources": [
+        "../ui/**/*"
+      ]
+    },
+    "updater": {
+      "active": false
+    }
+  }
+}
