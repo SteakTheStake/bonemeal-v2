@@ -250,11 +250,17 @@ body {
     background-size: cover;
 }
 
+.thin {
+    top: 50%;
+    left: 0;
+    transform: translate(0, 50%);
+}
+
 .navbar ul {
     list-style: none;
+    background-color: rgba(80, 12, 225, 0.75);
+    display: inline;
     margin: 0 auto;
-    background-color: rgba(164, 72, 218, 0.75);
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0.75rem;
@@ -273,7 +279,7 @@ body {
 }
 
 .navbar a {
-    color: #FFF;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -1711,7 +1717,7 @@ summary i {
 }
 
 .titlebar {
-    height: 5%;
+    height: 2rem;
     user-select: none;
     display: flex;
     justify-content: flex-end;
@@ -1721,11 +1727,30 @@ summary i {
     right: 0;
 }
 
+.titlebar-button-0 {
+    display: inline-flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    left: 0;
+    margin-top: 5px;
+    z-index: 99999999999999999;
+}
+
+.img {
+    padding: 10px;
+    width: auto;
+    height: 100%;
+    transform: scale(5);
+
+
+}
+
 .titlebar-button-1 {
     display: inline-flex;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 5px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     width: 5%;
@@ -1734,15 +1759,13 @@ summary i {
     z-index: 99999999999999999;
 }
 .titlebar-button-1:hover {
-    background: rgb(164, 72, 218);
+    background: rgba(80, 12, 225, 0.75);
 }
 
 
 .titlebar-button-2 {
     display: inline-flex;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 5px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     width: 5%;
@@ -1751,15 +1774,13 @@ summary i {
     z-index: 99999999999999999;
 }
 .titlebar-button-2:hover {
-    background: rgb(164, 72, 218);
+    background: rgba(80, 12, 225, 0.75);
 }
 
 
 .titlebar-button-3 {
     display: inline-flex;
-    margin-left: 10px;
-    margin-right: 0;
-    padding: 5px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     width: 5%;
@@ -1768,7 +1789,7 @@ summary i {
     z-index: 99999999999999999;
 }
 .titlebar-button-3:hover {
-    background: rgb(164, 72, 218);
+    background: rgba(80, 12, 225, 0.75);
 }
 
 .prevent-select {
@@ -1776,6 +1797,10 @@ summary i {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+.prevent-drag {
+    -webkit-user-drag: none;
 }
 
 .title {

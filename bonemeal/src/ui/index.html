@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <!-- ... (Bootstrap and custom CSS links) ... -->
     <title>BONEMEAL</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script type="module" crossorigin src="../bonemeal/src/main.ts" defer></script>
     <link rel="shortcut icon" href="./favicon.ico">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="./main-style.css" rel="stylesheet">
-    <link href="fontawesome-free-6.5.1-web/css/solid.css" rel="stylesheet">
-    <link href="fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
+    <link href="./fontawesome-free-6.5.1-web/css/solid.css" rel="stylesheet">
+    <link href="./fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
 </head>
 <body>
 <div data-tauri-drag-region class="titlebar">
@@ -27,44 +26,47 @@
         <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
     </div>
 </div>
-<div  class="navbar nav-0">
-    <ul>
-        <li>
-            <a href="#" onclick="window.dispatchEvent(new CustomEvent('navigate/'))">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" onclick="window.dispatchEvent(new CustomEvent('navigate/tools'))">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <span>Tools</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" onclick="window.dispatchEvent(new CustomEvent('navigate/stats'))">
-                <i class="fa-solid fa-gauge"></i>
-                <span>Stats</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" onclick="window.dispatchEvent(new CustomEvent('navigate/log'))">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span>Log</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" onclick="window.dispatchEvent(new CustomEvent('navigate/settings'))">
-                <i class="fa-solid fa-bars"></i>
-                <span>Settings</span>
-            </a>
-        </li>
-    </ul>
-</div>
+<nav class="thin">
+    <div  class="navbar nav-0">
+        <ul>
+            <li>
+                <a href="./index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span style="user-select: none;">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="./tools.html">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span style="user-select: none;">Tools</span>
+                </a>
+            </li>
+            <li>
+                <a href="./stats.html">
+                    <i class="fa-solid fa-gauge"></i>
+                    <span style="user-select: none;">Stats</span>
+                </a>
+            </li>
+            <li>
+                <a href="./log.html">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span style="user-select: none;">Log</span>
+                </a>
+            </li>
+            <li>
+                <a href="./settings.html">
+                    <i class="fa-solid fa-bars"></i>
+                    <span style="user-select: none;">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container main">
+    <h1>HOME</h1>
 </div>
 <details>
-    <summary style="user-select: none;"><i class="fa-solid fa-question"></i></summary>
+    <summary style="user-select: none;">What's Bonemeal<i class="fa-solid fa-question"></i></summary>
     <div>
         <h1>BONEMEAL</h1>
         <p>Speed Up Your Workflow</p>
@@ -91,7 +93,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="js/particles.js"></script>
-<script src="./script.js" type="module"></script>
+<script src="../main.ts" crossorigin type="javascript" defer></script>
+<script src="./script.js" crossorigin type="javascript" defer></script>
 </body>
 </html>

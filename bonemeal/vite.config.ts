@@ -12,16 +12,16 @@ export default defineConfig(async () => ({
     port: 1420,
     strictPort: true,
     watch: {
-      // 3. tell vite to ignore watching `src-tauri`xcsedfxokilp
+      // 3. tell vite to ignore watching `src-tauri`
       ignored: ["**/src-tauri/**"],
     },
   },
-  root: "ui",
+  root: "src",
   build: {
     outDir: resolve(__dirname, "dist"),
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, "ui/index.html"),
+      input: resolve(__dirname, "src/ui/index.html"),
     },
   },
 }));

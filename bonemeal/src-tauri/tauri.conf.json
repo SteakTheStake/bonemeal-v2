@@ -2,8 +2,8 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "../../ui",
-    "distDir": "../../ui",
+    "devPath": "../src/ui",
+    "distDir": "../src/ui",
     "withGlobalTauri": true
   },
   "package": {
@@ -65,7 +65,7 @@
         "icons/favicon.ico"
       ],
       "resources": [
-        "../../ui/**/*"
+        "../src/ui/**/*"
       ]
     },
     "updater": {

@@ -1,6 +1,7 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { appWindow } from '@tauri-apps/api/window';
 
+
 // Define an interface for the routes object
 interface Routes {
   '/': string;
@@ -12,11 +13,11 @@ interface Routes {
 
 // Define the routes and their corresponding template files
 const routes: Routes = {
-  '/': 'index.html',
-  '/tools': 'tools.html',
-  '/stats': 'stats.html',
-  '/log': 'log.html',
-  '/settings': 'settings.html',
+  '/': '../ui/index.html',
+  '/tools': '../ui/tools.html',
+  '/stats': '../ui/stats.html',
+  '/log': '../ui/log.html',
+  '/settings': '../ui/settings.html',
 };
 
 // Get the current year for the copyright notice
