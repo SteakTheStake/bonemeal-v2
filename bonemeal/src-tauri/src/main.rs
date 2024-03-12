@@ -1,8 +1,12 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
+mod console;
+
 #[macro_use]
 extern crate lazy_static;
 extern crate tera;
+use console::{log, ConsoleLogLevel};
 
 use std::collections::HashMap;
 use tauri::Manager;
@@ -52,6 +56,10 @@ fn main() {
                 set_shadow(&window, true).unwrap();
             }
 
+
+            let window = app.get_window("main").unwrap();
+            log(&window, ConsoleLogLevel::Info, "Application started");
+
             let mut context = Context::new();
             context.insert("version", "0.0.1");
 
@@ -59,27 +67,28 @@ fn main() {
             for (route, template) in routes.clone() {
                 let route_clone = route.to_string();
                 let template_clone = template.to_string();
-                let context_clone = context.clone();
                 let window_clone = window.clone();
+                let app_handle = app.handle();
                 window.listen(format!("navigate/{}", route), move |_| {
-                    let context = context_clone.clone();
-                    let window = window_clone.clone();
+                    let context = Context::new();
                     let rendered = TEMPLATES.render(&template_clone, &context).unwrap_or_else(|e| {
-                        eprintln!("Error rendering template: {}", e);
+                        log(&window_clone, ConsoleLogLevel::Info, &format!("Navigated to route: {}", route_clone));
                         String::new()
                     });
-                    window.eval(&format!("history.pushState(null, '', '{}');", route_clone)).unwrap();
-                    window.eval(&format!("document.body.innerHTML = {:?}", rendered)).unwrap();
+                    window_clone.eval(&format!("history.pushState(null, '', '{}');", route_clone)).unwrap();
+                    window_clone.eval(&format!("document.body.innerHTML = {:?}", rendered)).unwrap();
 
-                    window.eval("const styleSheet = document.createElement('style'); styleSheet.innerHTML = `{:?}`; document.head.appendChild(styleSheet);").unwrap();
+                    window_clone.eval("const styleSheet = document.createElement('style'); styleSheet.innerHTML = `{:?}`; document.head.appendChild(styleSheet);").unwrap();
                 });
             }
+
 
             // Render the initial page
             let rendered = TEMPLATES.render("index.html", &context).unwrap_or_else(|e| {
                 eprintln!("Error rendering template: {}", e);
                 String::new()
             });
+            log(&window, ConsoleLogLevel::Info, "Initial page rendered");
             window.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(1200, 1200))).unwrap();
             window.set_title("Bonemeal").unwrap();
             window.eval(&format!("document.body.innerHTML = {:?}", rendered)).unwrap();

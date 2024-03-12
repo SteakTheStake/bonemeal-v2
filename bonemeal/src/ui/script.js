@@ -1,4 +1,4 @@
-import { appWindow } from '/@tauri-apps/api/window.js'
+import { appWindow } from '/@tauri-apps/api/window'
 window.addEventListener("DOMContentLoaded", (event) => {
     const el1 = document.getElementById('titlebar-minimize');
     const el2 = document.getElementById('titlebar-maximize');

@@ -226,10 +226,10 @@
 }
 
 .nav-0 {
-    position: relative;
-    left: 100%;
-    top: 0;
-    transform: translate(-77.4%);
+    margin-left: 40px;
+    padding: 5px;
+    left: 15px;
+    transform: translate(-80vw);
 }
 
 .fixed-pos {
@@ -251,9 +251,12 @@ body {
 }
 
 .thin {
-    top: 50%;
-    left: 0;
+    top: 50vh;
     transform: translate(0, 50%);
+}
+
+.navbar {
+
 }
 
 .navbar ul {
@@ -1102,12 +1105,37 @@ button:active {
 }
 
 .main {
-    flex: 1; /* Each column takes equal space */
-    padding: 80px;
-    /* Removed width: 100% to allow flex to control the width */
-    width: 100%;
+    position: relative;
+    padding: 8px;
+    height: 100%;
     display: flex;
+    flex-wrap: inherit;
+    text-wrap: normal;
+    text-overflow: ellipsis;
+}
+
+.cmd {
+    min-width: 80%;
+    padding: 15px;
+    color: lime;
+    background: #301f6e;
+    border: thick #7e41ff;
     flex-wrap: wrap;
+    margin: 15px 15px 38%;
+    z-index: -1000000000000;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+}
+.timestamp {
+    color: #808080;
+}
+.level {
+    font-weight: bold;
+}
+.message {
+    white-space: pre-wrap;
 }
 
 .main2 {
@@ -1508,9 +1536,14 @@ button:active {
 }
 
 .top-title {
-    margin-top: 100px;
-    padding: 20px;
-    color: #FFFFFF;
+    justify-content: flex-start;
+    padding: 50px;
+    position: relative;
+    top: -40%;
+    left: -10%;
+    width: 75%;
+    z-index: -99999999999;
+    flex-wrap: wrap;
 }
 
 .container-bm {
