@@ -16,6 +16,10 @@ window-shadows = "0.2.2"
 tera = "1"
 lazy_static = { version = "1.4.0", features = [] }
 chrono = { version = "0.4.35", features = [] }
+tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+log = "0.4.21"
+console = "0.15.8"
+
 
 [dependencies.windows]
 version = "0.54.0"

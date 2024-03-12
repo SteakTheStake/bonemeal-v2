@@ -1115,14 +1115,17 @@ button:active {
 }
 
 .cmd {
-    min-width: 80%;
+    min-width: 100%;
+    max-height: 50%;
     padding: 15px;
-    color: lime;
+    color: #a100ff;
     background: #301f6e;
-    border: thick #7e41ff;
+    border: 5px solid #7e41ff;
+    mix-blend-mode: overlay;
     flex-wrap: wrap;
     margin: 15px 15px 38%;
     z-index: -1000000000000;
+    box-sizing: content-box;
 }
 
 .log-entry {
@@ -1537,13 +1540,15 @@ button:active {
 
 .top-title {
     justify-content: flex-start;
-    padding: 50px;
+    padding: 55px;
     position: relative;
     top: -40%;
     left: -10%;
-    width: 75%;
+    width: 10vw;
+    transform: translateX(-65vw);
     z-index: -99999999999;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .container-bm {

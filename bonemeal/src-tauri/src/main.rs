@@ -12,6 +12,7 @@ use std::collections::HashMap;
 use tauri::Manager;
 use tera::{Context, Tera};
 use window_shadows::set_shadow;
+use tauri_plugin_log::{LogTarget, Logger}; // Important import
 
 fn page(value: &serde_json::Value, _args: &HashMap<String, serde_json::Value>) -> tera::Result<serde_json::Value> {
     if let serde_json::Value::String(s) = value {
@@ -38,6 +39,7 @@ lazy_static! {
     };
 }
 
+
 fn main() {
     // Define routes and their corresponding template files
     let routes = vec![
@@ -48,6 +50,15 @@ fn main() {
         ("/settings", "settings.html"),
     ];
 
+    // Initialize the logger
+    let logger = Logger::new(Builder::default()
+        .targets([
+            LogTarget::LogDir,
+            LogTarget::Stdout,
+            LogTarget::Webview,
+        ]).build()
+    );
+
     tauri::Builder::default()
         .setup(move |app| {
             #[cfg(any(windows, target_os = "macos"))]
@@ -57,8 +68,10 @@ fn main() {
             }
 
 
+            app.manage(logger.clone());
+
             let window = app.get_window("main").unwrap();
-            log(&window, ConsoleLogLevel::Info, "Application started");
+            logger.log(&window, ConsoleLogLevel::Info, "Application started"); // Use the plugin logger
 
             let mut context = Context::new();
             context.insert("version", "0.0.1");
@@ -95,6 +108,7 @@ fn main() {
 
             Ok(())
         })
+        .plugin(logger.plugin()) // Enable the plugin
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
