@@ -6,13 +6,11 @@ mod console;
 #[macro_use]
 extern crate lazy_static;
 extern crate tera;
-use console::{log, ConsoleLogLevel};
 
 use std::collections::HashMap;
 use tauri::Manager;
 use tera::{Context, Tera};
 use window_shadows::set_shadow;
-use tauri_plugin_log::{LogTarget, logger::Logger};
 
 fn page(value: &serde_json::Value, _args: &HashMap<String, serde_json::Value>) -> tera::Result<serde_json::Value> {
     if let serde_json::Value::String(s) = value {
@@ -49,16 +47,6 @@ fn main() {
         ("/log", "log.html"),
         ("/settings", "settings.html"),
     ];
-
-    // Initialize the logger
-    let logger = Logger::new(tauri_plugin_log::Builder::default()
-        .targets([
-            LogTarget::LogDir,
-            LogTarget::Stdout,
-            LogTarget::Webview,
-        ]).build()
-    );
-
     tauri::Builder::default()
         .setup(move |app| {
             #[cfg(any(windows, target_os = "macos"))]
@@ -67,11 +55,7 @@ fn main() {
                 set_shadow(&window, true).unwrap();
             }
 
-
-            app.manage(logger.clone());
-
             let window = app.get_window("main").unwrap();
-            logger.log(&window, ConsoleLogLevel::Info, "Application started"); // Use the plugin logger
 
             let mut context = Context::new();
             context.insert("version", "0.0.1");
@@ -85,7 +69,6 @@ fn main() {
                 window.listen(format!("navigate/{}", route), move |_| {
                     let context = Context::new();
                     let rendered = TEMPLATES.render(&template_clone, &context).unwrap_or_else(|e| {
-                        log(&window_clone, ConsoleLogLevel::Info, &format!("Navigated to route: {}", route_clone));
                         String::new()
                     });
                     window_clone.eval(&format!("history.pushState(null, '', '{}');", route_clone)).unwrap();
@@ -101,14 +84,12 @@ fn main() {
                 eprintln!("Error rendering template: {}", e);
                 String::new()
             });
-            log(&window, ConsoleLogLevel::Info, "Initial page rendered");
             window.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(1200, 1200))).unwrap();
             window.set_title("Bonemeal").unwrap();
             window.eval(&format!("document.body.innerHTML = {:?}", rendered)).unwrap();
 
             Ok(())
         })
-        .plugin(logger.plugin())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
