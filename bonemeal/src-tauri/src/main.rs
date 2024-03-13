@@ -12,7 +12,7 @@ use std::collections::HashMap;
 use tauri::Manager;
 use tera::{Context, Tera};
 use window_shadows::set_shadow;
-use tauri_plugin_log::{LogTarget, Logger}; // Important import
+use tauri_plugin_log::{LogTarget, logger::Logger};
 
 fn page(value: &serde_json::Value, _args: &HashMap<String, serde_json::Value>) -> tera::Result<serde_json::Value> {
     if let serde_json::Value::String(s) = value {
@@ -51,7 +51,7 @@ fn main() {
     ];
 
     // Initialize the logger
-    let logger = Logger::new(Builder::default()
+    let logger = Logger::new(tauri_plugin_log::Builder::default()
         .targets([
             LogTarget::LogDir,
             LogTarget::Stdout,
@@ -108,7 +108,7 @@ fn main() {
 
             Ok(())
         })
-        .plugin(logger.plugin()) // Enable the plugin
+        .plugin(logger.plugin())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
