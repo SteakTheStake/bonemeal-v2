@@ -43,7 +43,7 @@ fn main() {
     let routes = vec![
         ("/", "index.html"),
         ("/tools", "tools.html"),
-        ("/stats", "stats.html"),
+        ("/stats", "docs.html"),
         ("/log", "log.html"),
         ("/settings", "settings.html"),
     ];

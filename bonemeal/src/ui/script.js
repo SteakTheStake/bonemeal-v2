@@ -1,15 +1,18 @@
-import { appWindow } from '/@tauri-apps/api/window'
-window.addEventListener("DOMContentLoaded", (event) => {
-    const el1 = document.getElementById('titlebar-minimize');
-    const el2 = document.getElementById('titlebar-maximize');
-    const el3 = document.getElementById('titlebar-close');
-    if (el1) {
-    el1.addEventListener('click', () => appWindow.minimize())
+import { appWindow } from '@tauri-apps/api/window';
+
+async function maxWin(){
+    const maximized = await appWindow.isMaximized();
+    if (maximized) {
+        await appWindow.unmaximize();
+    }else{
+        await appWindow.maximize();
     }
-    if (el2) {
-    el2.addEventListener('click', () => appWindow.toggleMaximize())
-    }
-    if (el3) {
-    el3.addEventListener('click', () => appWindow.close())
-    }
-});
+}
+
+async function hideWin(){
+    await appWindow.minimize();
+}
+
+async function closeWin(){
+    await appWindow.close();
+}

@@ -22,6 +22,9 @@
   text-align: center;
 }
 
+.container:default {
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

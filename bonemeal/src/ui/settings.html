@@ -17,53 +17,57 @@
 <body>
 <div data-tauri-drag-region class="titlebar">
     <h1 class="title-center top-title">Settings</h1>
-    <div class="titlebar-button-1" id="titlebar-minimize">
+    <div class="titlebar-button-1" onclick="hideWin()">
         <i class="fa-regular fa-square-minus" style="color: #8000ff;"></i>
     </div>
-    <div class="titlebar-button-2" id="titlebar-maximize">
+    <div class="titlebar-button-2" onclick="maxWin()">
         <i class="fa-regular fa-window-maximize" style="color: #8000ff;"></i>
     </div>
-    <div class="titlebar-button-3" id="titlebar-close">
+    <div class="titlebar-button-3" onclick="closeWin()">
         <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
     </div>
 </div>
-<nav class="thin">
-    <div  class="navbar nav-0">
-        <ul>
-            <li>
-                <a href="./index.html">
-                    <i class="fa-solid fa-house"></i>
-                    <span style="user-select: none;">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="./tools.html">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                    <span style="user-select: none;">Tools</span>
-                </a>
-            </li>
-            <li>
-                <a href="./stats.html">
-                    <i class="fa-solid fa-gauge"></i>
-                    <span style="user-select: none;">Stats</span>
-                </a>
-            </li>
-            <li>
-                <a href="./log.html">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    <span style="user-select: none;">Log</span>
-                </a>
-            </li>
-            <li>
-                <a href="./settings.html">
-                    <i class="fa-solid fa-bars"></i>
-                    <span style="user-select: none;">Settings</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div class="thin" style="z-index: 1000000000000000000000000000000000">
+    <nav>
+        <div  class="navbar nav-0">
+            <ul>
+                <li>
+                    <a href="./index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span style="user-select: none;">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./tools.html">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span style="user-select: none;">Tools</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./docs.html">
+                        <i class="fa-solid fa-book"></i>
+                        <span style="user-select: none;">Documentation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./log.html">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span style="user-select: none;">Log</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./settings.html">
+                        <i class="fa-solid fa-bars"></i>
+                        <span style="user-select: none;">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <div class="container main">
+    <div class="text-docs-bold"><h1>whoa there bucko, where you think you're goin <i class="fa-solid fa-hat-cowboy"></i></h1></div>
+
 </div>
 <!-- JavaScript for interactive elements -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

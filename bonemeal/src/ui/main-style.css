@@ -240,7 +240,6 @@
 body {
     background: #17063b;
     color: #ffffff;
-    overflow: hidden;
 }
 
 #particles-js {
@@ -251,12 +250,12 @@ body {
 }
 
 .thin {
-    top: 50vh;
+    position: relative;
     transform: translate(0, 50%);
+    z-index: 188231041201;
 }
 
 .navbar {
-
 }
 
 .navbar ul {
@@ -477,14 +476,12 @@ body {
     color: white;
     font-family: 'MinecraftCHMC', SansSerif, serif;
     font-weight: bold;
-    transform: translateY(-120px);
 }
 
 .sub-title-center2 {
     text-align: center;
-    color: #ffd42a;
+    color: #a100ff;
     font-family: 'MinecraftCHMC', SansSerif, serif;
-    transform: translateY(-15px);
 }
 
 
@@ -651,6 +648,7 @@ canvas {
 }
 
 .rain {
+    position: inherit;
     z-index: -9;
 }
 
@@ -1023,6 +1021,7 @@ button:active {
 }
 
 .checkbox-right {
+    position: relative;
     z-index: 99999;
     width: 0;
     float: left;
@@ -1112,10 +1111,49 @@ button:active {
     flex-wrap: inherit;
     text-wrap: normal;
     text-overflow: ellipsis;
+    z-index: 1000000000;
+}
+
+.text-box {
+    position: inherit;
+    border-radius: 2vh;
+    min-width: 100%;
+    min-height: 50%;
+    max-height: 50%;
+    padding: 15px;
+    color: #a100ff;
+    background: #301f6e;
+    border: 5px solid #7e41ff;
+    mix-blend-mode: overlay;
+    flex-wrap: wrap;
+    margin: 15px 15px 38%;
+    box-sizing: content-box;
+    overflow-x: clip;
+    overflow-y: scroll;
+    z-index: -12;
+}
+
+.log-box {
+    border-radius: 2vh;
+    min-width: 100%;
+    min-height: 50%;
+    max-height: 50%;
+    padding: 15px;
+    color: #a100ff;
+    background: #301f6e;
+    border: 5px solid #7e41ff;
+    mix-blend-mode: overlay;
+    flex-wrap: wrap;
+    margin: 15px 15px 38%;
+    box-sizing: content-box;
+    overflow-x: clip;
+    overflow-y: scroll;
 }
 
 .cmd {
+    border-radius: 2vh;
     min-width: 100%;
+    min-height: 50%;
     max-height: 50%;
     padding: 15px;
     color: #a100ff;
@@ -1126,6 +1164,19 @@ button:active {
     margin: 15px 15px 38%;
     z-index: -1000000000000;
     box-sizing: content-box;
+    overflow-x: clip;
+    overflow-y: scroll;
+}
+
+.content {
+    margin-right: 70vw;
+    margin-left: 50px;
+    padding-left: 100%;
+    padding-bottom: 50%;
+}
+
+@media screen {
+
 }
 
 .log-entry {
@@ -1163,21 +1214,14 @@ button:active {
 
 /* Example media query for smaller screens */
 @media (max-width: 400px) {
-    .main {
-        padding: 1rem;
-    }
-
-    .navbar {
-        left: 0;
-    }
-
-    body {
-
-    }
     .bottom-div {
         margin: 75px 0 0;
         top: 120px;
         padding: 25px;
+    }
+    .text-box {
+        max-height: 65%;
+        min-width: 100%;
     }
 }
 @media (max-width: 600px) {
@@ -1196,6 +1240,10 @@ button:active {
         margin: 50px 0 0;
         top: 80px;
         padding: 25px;
+    }
+    .text-box {
+        max-height: 65%;
+        min-width: 100%;
     }
 }
 @media (max-width: 770px) {
@@ -1553,27 +1601,35 @@ button:active {
 
 .container-bm {
     z-index: 9999;
-    padding: 50px;
     align-content: center;
     text-align: left;
-    margin-right: 350px;
-    margin-left: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-35%);
 }
 
 .text-docs {
     color: rgba(255, 255, 255, 0.75);
     opacity: 100%;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .text-docs-bold {
-    color: rgb(183, 108, 255);
-    font-size: 2.5rem;
+    color: rgb(255, 213, 0);
+    font-size: 2rem;
+    mix-blend-mode: screen;
+}
+
+.sub-text-docs-bold {
+    color: rgb(255, 213, 0);
+    font-size: 2rem;
+    mix-blend-mode: screen;
 }
 
 .text-docs-title {
-    color: rgb(132, 0, 255);
+    color: rgb(161, 0, 255);
     font-size: 3rem;
+    font-weight: bold;
 }
 
 #progress-bar {
@@ -1652,6 +1708,7 @@ button:active {
 
 
 details {
+    z-index: 1000000000000;
     position: fixed;
     right: 1rem;
     bottom: 1rem;
@@ -2061,4 +2118,8 @@ body .particletext.bubbles > .particle {
     --violet: #885be1;
     --dark-violet: #8446e1;
     --black: #21232a;
+}
+
+.zindex {
+    z-index: -188231041201;
 }
