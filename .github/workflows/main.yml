@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm' # Set this to npm, yarn or pnpm.
-          cache-dependency-path: 'bonemeal\package-lock.json'
+          cache-dependency-path: 'D:\a\bonemeal-v2\bonemeal-v2\bonemeal\package-lock.json'
 
       - name: Install frontend dependencies
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
@@ -56,3 +56,7 @@ jobs:
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.1.4
+        with:
+          path: './releases'
