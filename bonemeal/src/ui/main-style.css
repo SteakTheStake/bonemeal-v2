@@ -229,7 +229,7 @@
     margin-left: 40px;
     padding: 5px;
     left: 15px;
-    transform: translate(-80vw);
+    transform: translate(-8vw);
 }
 
 .fixed-pos {
@@ -252,7 +252,8 @@ body {
 .thin {
     position: relative;
     transform: translate(0, 50%);
-    z-index: 188231041201;
+    z-index: 51;
+    width: 10vw;
 }
 
 .navbar {
@@ -1022,7 +1023,7 @@ button:active {
 
 .checkbox-right {
     position: relative;
-    z-index: 99999;
+    z-index: 50;
     width: 0;
     float: left;
     font-size: 2.5rem;
@@ -1105,18 +1106,18 @@ button:active {
 
 .main {
     position: relative;
+    z-index: 50;
     padding: 8px;
     height: 100%;
     display: flex;
     flex-wrap: inherit;
     text-wrap: normal;
     text-overflow: ellipsis;
-    z-index: 1000000000;
 }
 
 .text-box {
     position: inherit;
-    border-radius: 2vh;
+    border-radius: 2vh 0 0 2vh;
     min-width: 100%;
     min-height: 50%;
     max-height: 50%;
@@ -1127,14 +1128,16 @@ button:active {
     mix-blend-mode: overlay;
     flex-wrap: wrap;
     margin: 15px 15px 38%;
+    z-index: -12;
     box-sizing: content-box;
     overflow-x: clip;
     overflow-y: scroll;
-    z-index: -12;
+    scrollbar-color: #8400ff rgb(48, 31, 110);
+    scrollbar-width: thin;
 }
 
 .log-box {
-    border-radius: 2vh;
+    border-radius: 2vh 0 0 2vh;
     min-width: 100%;
     min-height: 50%;
     max-height: 50%;
@@ -1151,10 +1154,10 @@ button:active {
 }
 
 .cmd {
-    border-radius: 2vh;
+    border-radius: 2vh 0 0 2vh;
     min-width: 100%;
-    min-height: 50%;
-    max-height: 50%;
+    min-height: 60%;
+    max-height: 70%;
     padding: 15px;
     color: #a100ff;
     background: #301f6e;
@@ -1166,17 +1169,15 @@ button:active {
     box-sizing: content-box;
     overflow-x: clip;
     overflow-y: scroll;
+    scrollbar-color: #8400ff rgb(48, 31, 110);
+    scrollbar-width: thin;
 }
 
-.content {
-    margin-right: 70vw;
+.cmd-content {
+    margin-right: 555px;
     margin-left: 50px;
     padding-left: 100%;
     padding-bottom: 50%;
-}
-
-@media screen {
-
 }
 
 .log-entry {
@@ -1219,9 +1220,19 @@ button:active {
         top: 120px;
         padding: 25px;
     }
+
+    .navbar {
+        left: -10px;
+    }
     .text-box {
         max-height: 65%;
         min-width: 100%;
+    }
+    .cmd-content {
+        margin-right: 160px;
+        margin-left: 50px;
+        padding-left: 100%;
+        padding-bottom: 150px;
     }
 }
 @media (max-width: 600px) {
@@ -1230,7 +1241,7 @@ button:active {
     }
 
     .navbar {
-        left: 0;
+        left: 100px;
     }
 
     body {
@@ -1245,35 +1256,60 @@ button:active {
         max-height: 65%;
         min-width: 100%;
     }
+    .cmd-content {
+        margin-right: 300px;
+        margin-left: 50px;
+        padding-left: 100%;
+        padding-bottom: 125px;
+    }
 }
-@media (max-width: 770px) {
+@media (max-width: 950px) {
     .main {
     }
 
     .navbar {
-        left: 0;
+        left: 20px;
     }
 
     body {
 
     }
+    .cmd-content {
+        margin-right: 375px;
+        margin-left: 50px;
+        padding-left: 100%;
+        padding-bottom: 350px;
+    }
 }
-@media (min-width: 770px) {
+@media (min-width: 950px) {
     .main {
     }
 
     .navbar {
-        left: 33%;
+        left: 50%;
     }
 
     body {
 
     }
+    .cmd-content {
+        margin-right: 750px;
+        margin-left: 50px;
+        padding-left: 100%;
+        padding-bottom: 450px;
+    }
 }
 
-@media (min-width: 1921px) {
+@media (min-width: 1919px) {
     .navbar {
-        left: 33%;
+        left: -10%;
+        transform: scale(1.25);
+    }
+    .cmd-content {
+        margin-right: 1000px;
+        margin-left: 50px;
+        padding-left: 100%;
+        padding-bottom: 675px;
     }
 }
 
@@ -1285,7 +1321,7 @@ button:active {
 }
 
 .main {
-    padding: 3em;
+    padding: 4em;
     margin: 20px 15px 15px 0;
     top: 50%;
     left: 50%;
@@ -1600,11 +1636,9 @@ button:active {
 }
 
 .container-bm {
-    z-index: 9999;
+    position: relative;
     align-content: center;
     text-align: left;
-    top: 50%;
-    left: 50%;
     transform: translateY(-35%);
 }
 
@@ -2118,8 +2152,4 @@ body .particletext.bubbles > .particle {
     --violet: #885be1;
     --dark-violet: #8446e1;
     --black: #21232a;
-}
-
-.zindex {
-    z-index: -188231041201;
 }

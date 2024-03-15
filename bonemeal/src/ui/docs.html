@@ -15,27 +15,15 @@
     <link href="./fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
 </head>
 <body>
-<div data-tauri-drag-region class="titlebar">
-    <h1 class="title-center top-title">Docs</h1>
-    <div class="titlebar-button-1" onclick="hideWin()">
-        <i class="fa-regular fa-square-minus" style="color: #8000ff;"></i>
-    </div>
-    <div class="titlebar-button-2" onclick="maxWin()">
-        <i class="fa-regular fa-window-maximize" style="color: #8000ff;"></i>
-    </div>
-    <div class="titlebar-button-3" onclick="closeWin()">
-        <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
-    </div>
-</div>
 <div class="container main">
-        <div class="container-bm">
-            <h1 class="title-center2">BONEMEAL DOCUMENTATION</h1>
-            <h3 class="sub-title-center2">Learn To Speed Up Your Workflow</h3>
-            <div class="text-box">
+    <div class="container-bm">
+        <h1 class="title-center2">BONEMEAL DOCUMENTATION</h1>
+        <h3 class="sub-title-center2">Learn To Speed Up Your Workflow</h3>
+        <div class="text-box">
+            <div class="">
                 <div class="">
-                    <div class="">
-                        <h1 class="text-docs-title">Functionalities Coming Soon:</h1>
-                        <div>
+                    <h1 class="text-docs-title">Functionalities Coming Soon:</h1>
+                    <div>
                         <h2 class="text-docs-bold">Image Resizing:</h2>
                         <ul>
                             <li class="text-docs">This feature allows users to resize images to different dimensions. Users can upload multiple files and choose from predefined size options. Images that do not have the specific suffixes (_s.png, _n.png) will be resized with nearest interpolation and the rest resized with bilinear. The application also supports applying diffusion dithering for images that don't have specific suffixes (_s.png, _n.png).</li>
@@ -49,18 +37,30 @@
                             <li class="text-docs">Temporary storage of processed images and auto-deletion after a 1-minute duration.</li>
                             <li class="text-docs">After processing, users can download their images. The images are compressed into a zip file for convenience.</li>
                         </ul>
-                        </div>
                     </div>
-                    <div class="">
-                    </div>
+                </div>
+                <div class="">
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div data-tauri-drag-region class="titlebar">
+    <h1 class="title-center top-title">Docs</h1>
+    <div class="titlebar-button-1" id="titlebar-min">
+        <i class="fa-regular fa-square-minus" style="color: #8000ff;"></i>
+    </div>
+    <div class="titlebar-button-2" id="titlebar-max">
+        <i class="fa-regular fa-window-maximize" style="color: #8000ff;"></i>
+    </div>
+    <div class="titlebar-button-3" id="titlebar-close">
+        <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
+    </div>
 </div>
 <div class="thin">
     <nav>
         <div  class="navbar nav-0">
-            <ul class="zindex">
+            <ul>
                 <li>
                     <a href="./index.html">
                         <i class="fa-solid fa-house"></i>

@@ -17,16 +17,17 @@
 <body>
 <div data-tauri-drag-region class="titlebar">
     <h1 class="title-center top-title">Tools</h1>
-    <div class="titlebar-button-1" onclick="hideWin()">
+    <div class="titlebar-button-1" id="titlebar-min">
         <i class="fa-regular fa-square-minus" style="color: #8000ff;"></i>
     </div>
-    <div class="titlebar-button-2" onclick="maxWin()">
+    <div class="titlebar-button-2" id="titlebar-max">
         <i class="fa-regular fa-window-maximize" style="color: #8000ff;"></i>
     </div>
-    <div class="titlebar-button-3" onclick="closeWin()">
+    <div class="titlebar-button-3" id="titlebar-close">
         <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
     </div>
-</div><div class="thin">
+</div>
+<div class="thin">
     <nav>
         <div  class="navbar nav-0">
             <ul>
