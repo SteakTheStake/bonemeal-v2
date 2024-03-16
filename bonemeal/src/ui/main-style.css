@@ -14,7 +14,7 @@
 }
 
 #app {
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 #flashingtext {
@@ -474,15 +474,16 @@ body {
 
 .title-center2 {
     text-align: center;
-    color: white;
+    color: #ffd500;
     font-family: 'MinecraftCHMC', SansSerif, serif;
     font-weight: bold;
 }
 
 .sub-title-center2 {
     text-align: center;
-    color: #a100ff;
+    color: rgba(255, 213, 0, 0.75);
     font-family: 'MinecraftCHMC', SansSerif, serif;
+    mix-blend-mode: screen;
 }
 
 
@@ -1115,12 +1116,19 @@ button:active {
     text-overflow: ellipsis;
 }
 
+.scroll-text {
+    overflow-x: clip;
+    overflow-y: scroll;
+    scrollbar-color: #8400ff rgb(48, 31, 110);
+    scrollbar-width: thin;
+}
+
 .text-box {
     position: inherit;
     border-radius: 2vh 0 0 2vh;
-    min-width: 100%;
+    min-width: 45vw;
     min-height: 50%;
-    max-height: 50%;
+    max-height: 60%;
     padding: 15px;
     color: #a100ff;
     background: #301f6e;
@@ -1134,6 +1142,21 @@ button:active {
     overflow-y: scroll;
     scrollbar-color: #8400ff rgb(48, 31, 110);
     scrollbar-width: thin;
+}
+
+
+.text-box2 {
+    position: inherit;
+    border-radius: 2vh 0 0 2vh;
+    min-width: 50vw;
+    min-height: 50%;
+    max-height: 60%;
+    padding: 15px;
+    color: #a100ff;
+    flex-wrap: wrap;
+    margin: 15px 15px 38%;
+    z-index: -12;
+    box-sizing: border-box;
 }
 
 .log-box {
@@ -1224,8 +1247,12 @@ button:active {
     .navbar {
         left: -10px;
     }
+    .text-box2 {
+        max-height: 40%;
+        min-width: 100%;
+    }
     .text-box {
-        max-height: 65%;
+        max-height: 40%;
         min-width: 100%;
     }
     .cmd-content {
@@ -1252,8 +1279,12 @@ button:active {
         top: 80px;
         padding: 25px;
     }
+    .text-box2 {
+        max-height: 50%;
+        min-width: 100%;
+    }
     .text-box {
-        max-height: 65%;
+        max-height: 50%;
         min-width: 100%;
     }
     .cmd-content {
@@ -1265,14 +1296,22 @@ button:active {
 }
 @media (max-width: 950px) {
     .main {
+        top: 40%;
+        max-height: 100%;
+        margin-bottom: 10px;
     }
 
     .navbar {
-        left: 20px;
+        left: 45px;
     }
 
     body {
 
+    }
+    .text-box2 {
+        max-height: 10%;
+        height: 10%;
+        min-width: 125%;
     }
     .cmd-content {
         margin-right: 375px;
@@ -1661,7 +1700,7 @@ button:active {
 }
 
 .text-docs-title {
-    color: rgb(161, 0, 255);
+    color: rgb(255, 213, 0);
     font-size: 3rem;
     font-weight: bold;
 }
@@ -2152,4 +2191,84 @@ body .particletext.bubbles > .particle {
     --violet: #885be1;
     --dark-violet: #8446e1;
     --black: #21232a;
+}
+
+:root {
+    --page-height: 100vh;
+    --page-width: 100vw;
+    --page-margin: 0;
+    --page-padding: 0;
+    --page-text-color: #8e9196;
+    --page-text-color-hover: rgba(255, 255, 255, 1);
+    --page-background-color: rgb(126, 65, 255);
+    --tab-display: grid;
+    --tab-background-color: rgba(255, 255, 255, 0.03);
+    --display-none: none;
+    --box-sizing: border-box;
+}
+p {
+    padding: 0 1em;
+}
+p span {
+    color: var(--page-text-color-hover);
+}
+
+tab-container {
+    display: var(--tab-display);
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    border: solid rgb(126, 65, 255);
+    border-radius: 2vh 0 0 2vh;
+}
+/*
+TAB CONTROLS
+Hide radios */
+input {
+    display: none;
+}
+input:checked + label {
+    color: var(--page-text-color-hover);
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 250ms;
+}
+label {
+    cursor: pointer;
+    transition: color 250ms;
+    padding: 1em;
+    border-right: solid 2px var(--page-background-color);
+    background-color: var(--tab-background-color);
+    text-align: center;
+    transition: all 250ms;
+}
+label:last-of-type {
+    border: none;
+}
+label:hover {
+    color: var(--page-text-color-hover);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+tab-content {
+    display: var(--tab-display);
+    grid-column: 1 / -1;
+}
+/*
+Why doesn't this work!?
+input ~ tab-content {display: none;}
+input:checked ~ tab-content {display: var(--tab-display);}*/
+
+input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
+input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
+input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
+input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {
+    display: none;
+}
+
+.text-padding {
+    padding: 20px;
+}
+
+tab-container {
+    min-width: 100%;
 }
