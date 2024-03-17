@@ -32,31 +32,31 @@
         <div  class="navbar nav-0">
             <ul>
                 <li>
-                    <a href="./index.html">
+                    <a href="../index.html">
                         <i class="fa-solid fa-house"></i>
                         <span style="user-select: none;">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./tools.html">
+                    <a href="../tools.html">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         <span style="user-select: none;">Tools</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./docs.html">
+                    <a href="../docs.html">
                         <i class="fa-solid fa-book"></i>
                         <span style="user-select: none;">Documentation</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./log.html">
+                    <a href="../log.html">
                         <i class="fa-solid fa-clipboard-list"></i>
                         <span style="user-select: none;">Log</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./settings.html">
+                    <a href="../settings.html">
                         <i class="fa-solid fa-bars"></i>
                         <span style="user-select: none;">Settings</span>
                     </a>
@@ -188,33 +188,34 @@
             <p class="sub-title-center">©&nbsp;<span id="year"></span>&nbsp;Bonemeal. All rights reserved.</p>
         </div>
     </details>
-    <!-- JavaScript for interactive elements -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="../main.ts" crossorigin type="javascript" defer></script>
-    <script src="./script.js" crossorigin type="javascript" defer></script>
-    <script src="../script.js"></script>
-    <script src="../js/particles.js"></script>
-    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-    <script>
-        Dropzone.options.fileUpload = {
-            paramName: "file",
-            maxFilesize: 1000, // MB
-            acceptedFiles: 'image/*', // Accept only image files
-            accept: function(file, done) {
-                const extension = file.name.split('.').pop().toLowerCase();
-                const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff'];
+</div>
+<!-- JavaScript for interactive elements -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="../../main.ts" crossorigin type="javascript" defer></script>
+<script src="../script.js" crossorigin type="javascript" defer></script>
+<script src="../script.js"></script>
+<script src="../js/particles.js"></script>
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<script>
+    Dropzone.options.fileUpload = {
+        paramName: "file",
+        maxFilesize: 1000, // MB
+        acceptedFiles: 'image/*', // Accept only image files
+        accept: function(file, done) {
+            const extension = file.name.split('.').pop().toLowerCase();
+            const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff'];
 
-                if (!allowedExtensions.includes(extension)) {
-                    done("Only image files are allowed.");
-                } else {
-                    done();
-                }
+            if (!allowedExtensions.includes(extension)) {
+                done("Only image files are allowed.");
+            } else {
+                done();
             }
-        };
-    </script>
+        }
+    };
+</script>
 </body>
 </html>
