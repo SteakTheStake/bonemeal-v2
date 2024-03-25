@@ -21,7 +21,15 @@
         "all": true
       },
       "window": {
-        "all": true
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
       }
     },
     "windows": [
@@ -29,8 +37,8 @@
         "decorations": false,
         "title": "bonemeal",
         "url": "index.html",
-        "width": 1000,
-        "height": 1400,
+        "width": 1400,
+        "height": 1000,
         "label": "main",
         "fullscreen": false,
         "resizable": true,

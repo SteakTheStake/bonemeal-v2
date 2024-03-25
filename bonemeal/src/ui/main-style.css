@@ -324,7 +324,7 @@ body {
     background-color: #30305a;
     left: -5px;
     top: 50%;
-    transform: translatey(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
     border-radius: 3px;
 }
 
@@ -1114,6 +1114,7 @@ button:active {
     flex-wrap: inherit;
     text-wrap: normal;
     text-overflow: ellipsis;
+    justify-content: center;
 }
 
 .scroll-text {
@@ -1271,9 +1272,6 @@ button:active {
         left: 100px;
     }
 
-    body {
-
-    }
     .bottom-div {
         margin: 50px 0 0;
         top: 80px;
@@ -1886,10 +1884,8 @@ summary i {
 
 .titlebar {
     height: 2rem;
-    user-select: none;
     display: flex;
     justify-content: flex-end;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -2271,4 +2267,70 @@ input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {
 
 tab-container {
     min-width: 100%;
+}
+
+.cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card .card_image {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+}
+
+.card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+}
+
+.card .card_title {
+    text-align: center;
+    border-radius: 0 0 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -80px;
+    height: 40px;
+}
+
+.card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+    color: rgb(255, 213, 0);
+    font-size: 2rem;
+    mix-blend-mode: screen;
+}
+
+.title-black {
+    color: black;
+}
+
+@media all and (max-width: 500px) {
+    .card-list {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
 }

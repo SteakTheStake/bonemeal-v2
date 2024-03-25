@@ -39,6 +39,7 @@ lazy_static! {
 
 
 fn main() {
+
     // Define routes and their corresponding template files
     let routes = vec![
         ("/", "index.html"),
