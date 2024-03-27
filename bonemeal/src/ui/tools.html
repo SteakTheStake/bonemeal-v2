@@ -79,26 +79,129 @@
     </nav>
 </div>
 <div class="main">
-    <div class="cards-list">
+    <script>
+        const { invoke } = window.__TAURI__.tauri;
+        const { readTextFile, writeFile } = window.__TAURI__.fs;
+        const { appDir } = window.__TAURI__.path;
 
+        async function toggleStar(card) {
+            var star = card.querySelector('.fa-star');
+            if (star.classList.contains('star-false')) {
+                star.classList.remove('fa-regular', 'star-false');
+                star.classList.add('fa-solid', 'star-true');
+                await addToFavorites(card);
+            } else {
+                star.classList.remove('fa-solid', 'star-true');
+                star.classList.add('fa-regular', 'star-false');
+                await removeFromFavorites(card);
+            }
+        }
+
+        async function addToFavorites(card) {
+            // Get the card details
+            var title = card.querySelector('.card_title').textContent;
+            var image = card.querySelector('.resize_bg').style.backgroundImage;
+
+            // Create the card HTML
+            var cardHtml = `
+    <div class="card">
+      <div class="card_image">
+        <div class="resize_bg" style="${image}"></div>
+      </div>
+      <div class="card_title title-white">
+        <a>${title}</a>
+        <!-- MODULE ICON -->
+        <i class="fa-solid fa-down-left-and-up-right-to-center card-icon"></i>
+      </div>
+    </div>
+  `;
+
+            // Read the existing index.html content
+            var indexHtml = await readTextFile(`/bonemeal/src/ui/index.html`);
+
+            // Find the designated section in index.html where favorited cards should be added
+            var favoritesSection = '<section id="favorites">';
+            var sectionIndex = indexHtml.indexOf(favoritesSection);
+
+            if (sectionIndex !== -1) {
+                // Insert the card HTML after the opening tag of the designated section
+                indexHtml = indexHtml.slice(0, sectionIndex + favoritesSection.length) + cardHtml + indexHtml.slice(sectionIndex + favoritesSection.length);
+            } else {
+                // If the designated section is not found, append the card HTML to the end of the index.html content
+                indexHtml += cardHtml;
+            }
+
+            // Write the updated index.html content back to the file
+            await writeFile({ contents: indexHtml }, `/bonemeal/src/ui/index.html`);
+        }
+
+        async function removeFromFavorites(card) {
+            // Get the card title
+            var title = card.querySelector('.card_title').textContent;
+
+            // Read the existing index.html content
+            var indexHtml = await readTextFile(`/bonemeal/src/ui/index.html`);
+
+            // Remove the card HTML from the index.html content
+            var cardHtml = indexHtml.substring(
+                indexHtml.indexOf('<div class="card">'),
+                indexHtml.indexOf('</div>', indexHtml.indexOf('<div class="card">')) + 6
+            );
+            indexHtml = indexHtml.replace(cardHtml, '');
+
+            // Write the updated index.html content back to the file
+            await writeFile({ contents: indexHtml }, `/bonemeal/src/ui/index.html`);
+        }
+    </script>
+    <div class="cards-list">
         <div class="card 1">
             <div class="card_image">
-                <img src="/bonemeal/src/ui/img/resize.gif" />
+                <div class="resize_bg"></div>
             </div>
             <div class="card_title title-white">
-                <p>Bulk Resize</p>
+                <a>
+                    <i class="fa-regular fa-star star-false" onclick="toggleStar(this.closest('.card'))"></i>
+                </a>
+                <!-- MODULE ICON -->
+                <i class="fa-solid fa-down-left-and-up-right-to-center card-icon"></i>
             </div>
         </div>
-
         <div class="card 2">
             <div class="card_image">
-                <img src="../ui/img/resize.gif" />
+                <div class="resize_bg"></div>
             </div>
             <div class="card_title title-white">
-                <p>Auto CTM</p>
+                <a>
+                    <i class="fa-regular fa-star star-false" onclick="toggleStar(this.closest('.card'))"></i>
+                </a>
+                <!-- MODULE ICON -->
+                <i class="fa-solid fa-down-left-and-up-right-to-center card-icon"></i>
             </div>
         </div>
-
+        <div class="card 3">
+            <div class="card_image">
+                <div class="resize_bg"></div>
+            </div>
+            <div class="card_title title-white">
+                <a>
+                    <i class="fa-regular fa-star star-false" onclick="toggleStar(this.closest('.card'))"></i>
+                </a>
+                <!-- MODULE ICON -->
+                <i class="fa-solid fa-down-left-and-up-right-to-center card-icon"></i>
+            </div>
+        </div>
+        <div class="card 4">
+            <div class="card_image">
+                <div class="resize_bg"></div>
+            </div>
+            <div class="card_title title-white">
+                <a>
+                    <i class="fa-regular fa-star star-false" onclick="toggleStar(this.closest('.card'))"></i>
+                </a>
+                <!-- MODULE ICON -->
+                <i class="fa-solid fa-down-left-and-up-right-to-center card-icon"></i>
+            </div>
+        </div>
     </div>
 </div>
 <!-- JavaScript for interactive elements -->

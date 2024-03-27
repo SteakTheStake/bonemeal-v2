@@ -17,6 +17,19 @@
         "all": false,
         "open": true
       },
+      "fs": {
+        "scope": ["/bonemeal/src/ui/*"],
+        "all": true,
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "copyFile": true,
+        "createDir": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true,
+        "exists": true
+      },
       "notification": {
         "all": true
       },
