@@ -40,7 +40,7 @@ jobs:
           releaseDraft: false
           prerelease: false
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: tauri-app-${{ matrix.platform }}
           path: |
