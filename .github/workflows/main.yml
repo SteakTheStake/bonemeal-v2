@@ -3,11 +3,8 @@ name: "publish"
 on:
   push:
     branches:
-    - main
-    - release/*
-
-# This is the example from the readme.
-# On each push to the `release` branch it will create or update a GitHub release, build your app, and upload the artifacts to the release.
+      - main
+      - release/*
 
 jobs:
   publish-tauri:
@@ -17,19 +14,15 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-20.04, windows-latest]
-
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
-
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
-
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
@@ -37,7 +30,6 @@ jobs:
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
       - name: install frontend dependencies
         run: cd bonemeal && npm install
-
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,5 +37,24 @@ jobs:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: "App v__VERSION__"
           releaseBody: "See the assets to download this version and install."
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: tauri-app-${{ matrix.platform }}
+          path: |
+            ${{ github.workspace }}/src-tauri/target/release/bundle/
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ github.workspace }}/src-tauri/target/release/bundle/macos/app.app
+            ${{ github.workspace }}/src-tauri/target/release/bundle/msi/app_0.1.0_x64_en-US.msi
+            ${{ github.workspace }}/src-tauri/target/release/bundle/deb/app_0.1.0_amd64.deb
+            ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/app-0.1.0-x86_64.AppImage
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
