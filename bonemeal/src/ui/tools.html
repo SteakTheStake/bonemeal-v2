@@ -27,19 +27,6 @@
         <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
     </div>
 </div>
-<details>
-    <summary style="user-select: none;">What's New<i class="fa-solid fa-question"></i></summary>
-    <div>
-        <h1>BONEMEAL</h1>
-        <p>Version 0.0.1</p>
-        <h2>What's New</h2>
-        <ul>
-            <li>
-                feature #1
-            </li>
-        </ul>
-    </div>
-</details>
 <div class="thin">
     <nav>
         <div  class="navbar nav-0">
@@ -78,7 +65,7 @@
         </div>
     </nav>
 </div>
-<div class="main">
+<div class="main-tool">
     <script>
         const { invoke } = window.__TAURI__.tauri;
         const { readTextFile, writeFile } = window.__TAURI__.fs;
@@ -117,7 +104,7 @@
   `;
 
             // Read the existing index.html content
-            var indexHtml = await readTextFile(`/bonemeal/src/ui/index.html`);
+            var indexHtml = await readTextFile(`index.html`);
 
             // Find the designated section in index.html where favorited cards should be added
             var favoritesSection = '<section id="favorites">';
@@ -132,7 +119,7 @@
             }
 
             // Write the updated index.html content back to the file
-            await writeFile({ contents: indexHtml }, `/bonemeal/src/ui/index.html`);
+            await writeFile({ contents: indexHtml }, `index.html`);
         }
 
         async function removeFromFavorites(card) {
@@ -140,7 +127,7 @@
             var title = card.querySelector('.card_title').textContent;
 
             // Read the existing index.html content
-            var indexHtml = await readTextFile(`/bonemeal/src/ui/index.html`);
+            var indexHtml = await readTextFile(`index.html`);
 
             // Remove the card HTML from the index.html content
             var cardHtml = indexHtml.substring(
@@ -150,7 +137,7 @@
             indexHtml = indexHtml.replace(cardHtml, '');
 
             // Write the updated index.html content back to the file
-            await writeFile({ contents: indexHtml }, `/bonemeal/src/ui/index.html`);
+            await writeFile({ contents: indexHtml }, `index.html`);
         }
     </script>
     <div class="cards-list">

@@ -1119,16 +1119,34 @@ button:active {
     transition-delay: 0.15s;
 }
 
-.main {
+div .main {
     position: relative;
     z-index: 50;
     padding: 8px;
     height: 100%;
+    width: 100%;
     display: flex;
     flex-wrap: inherit;
     text-wrap: normal;
     text-overflow: ellipsis;
-    justify-content: center;
+    margin-bottom: 50px;
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+div.main-tool {
+    position: relative;
+    z-index: 50;
+    padding: 8px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: inherit;
+    text-wrap: normal;
+    text-overflow: ellipsis;
+    margin-bottom: 50px;
+    margin-left: 75px;
+    margin-right: 75px;
 }
 
 .scroll-text {
@@ -1242,7 +1260,7 @@ button:active {
 .text-center-both {
     margin-bottom: 50px;
     margin-top: 5px;
-    top: -300%;
+    top: -350px;
     left: 8%;
     position: relative;
 }
@@ -2263,10 +2281,6 @@ tab-content {
     display: var(--tab-display);
     grid-column: 1 / -1;
 }
-/*
-Why doesn't this work!?
-input ~ tab-content {display: none;}
-input:checked ~ tab-content {display: var(--tab-display);}*/
 
 input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
 input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
@@ -2283,12 +2297,17 @@ tab-container {
     min-width: 100%;
 }
 
+
+
 .cards-list {
+    position: relative;
+    left: 5%;
     z-index: 0;
-    width: 100%;
+    width: 100px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    height: 100%;
 }
 
 .card {
@@ -2324,12 +2343,13 @@ tab-container {
     font-size: 14px;
     margin-top: -80px;
     height: 40px;
+    transform: translate(5%, 2%);
 }
 
 .card:hover {
-    transform: scale(0.95, 0.95);
-    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
+    transform: scale(1.1, 1.1);
+    box-shadow: 5px 5px 30px 15px rgb(41, 11, 107,0.22),
+    -5px -5px 30px 15px rgba(041, 11, 107,0.22);
 }
 
 .title-white {
@@ -2363,16 +2383,16 @@ tab-container {
 
 .star-false {
     top: 0;
-    left: 100%;
+    left: 110%;
     position: inherit;
-    transform: scale(1.9) translate(-75%, -75%);
+    transform: scale(1.9) translate(-105%, -95%);
+    z-index: 2;
 }
 
 .star-false:hover {
     top: 0;
     left: 100%;
     position: inherit;
-    animation: star-in 100ms ease-in forwards;
 }
 
 @keyframes star-in {
@@ -2381,7 +2401,7 @@ tab-container {
     }
     100% {
         opacity: 1;
-        transform: scale(2.5) translate(-75%, -75%);
+        transform: scale(2.5) translate(-95%, -95%);
     }
 }
 
@@ -2389,14 +2409,14 @@ tab-container {
     top: 0;
     left: 100%;
     position: inherit;
-    transform: scale(1.9) translate(-75%, -75%);
+    transform: scale(1.9) translate(-105%, -95%);
+    z-index: 2;
 }
 
 .star-true:hover {
     top: 0;
     left: 100%;
     position: inherit;
-    animation: star-out 100ms ease-in forwards;
 }
 
 @keyframes star-out {
@@ -2405,7 +2425,7 @@ tab-container {
     }
     100% {
         opacity: 1;
-        transform: scale(2.5) translate(-75%, -75%);
+        transform: scale(2.5) translate(-95%, -95%);
     }
 }
 
@@ -2438,19 +2458,20 @@ tab-container {
 
 .tooltiptext {
     visibility: hidden;
-    width: 200px;
-    background-color: #230c56;
+    width: 50px;
+    background-color: rgb(41, 11, 107);
     color: #ffd500;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 50px;
     padding: 10px;
     position: absolute;
     z-index: 1;
-    top: 125%;
-    left: 50%;
+    left: 135%;
+    top: 0%;
     margin-left: -100px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.05s;
+    transform: scale(1.25);
 }
 
 .tooltiptext::after {
@@ -2460,6 +2481,4 @@ tab-container {
     left: 50%;
     margin-left: -10px;
     border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #230c56 transparent;
 }
