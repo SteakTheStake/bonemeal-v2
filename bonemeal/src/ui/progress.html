@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (Bootstrap and custom CSS links) ... -->
+    <title>BONEMEAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+</head>
+<body class="progress-body">
+<div id="particles-js"></div>
+<div class="container">
+    <h1 class="text-center">Your images are growing...</h1>
+    <!-- Display Area -->
+    <div id="progress-bar">
+        <div id="progress-bar-value"></div>
+    </div>
+</div>
+<!-- JavaScript for interactive elements -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    // Function to update the progress bar
+    function updateProgress(progress) {
+        var progressBar = document.getElementById("progress-bar-value");
+        progressBar.style.width = progress + "%";
+
+        if (progress === 100) {
+            // Redirect to the result page when progress reaches 100%
+            window.location.href = "resize-result.html";
+        }
+    }
+
+    // Simulate progress (replace with actual progress tracking logic)
+    var progress = 0;
+    var interval = setInterval(function() {
+        progress += 10;
+        updateProgress(progress);
+        if (progress >= 100) {
+            clearInterval(interval);
+        }
+    }, 1000);
+</script>
+<script src="script.js"></script>
+<script src="./js/particles.js"></script>
+</body>
+</html>

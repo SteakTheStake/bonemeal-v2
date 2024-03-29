@@ -27,6 +27,7 @@
         <i class="fa-solid fa-xmark fa-xl" style="color: #8000ff;"></i>
     </div>
 </div>
+<div id="particles-js"></div>
 <div class="thin">
     <nav>
         <div  class="navbar nav-0">
@@ -71,17 +72,13 @@
         </div>
     </nav>
 </div>
+
 <div class="container main">
     <div class="uploaded-files">
         <img src="" id="preview" alt="Uploaded Images">
     </div>
+
     <main class="main2">
-        <div>
-            <div class="text-center-both">
-                <h1 class="text-center">RESIZE | BONEMEAL</h1>
-                <h4 class="text-center">Resize textures in bulk and convert to indexed color for better in-game performance</h4>
-            </div>
-        </div>
         <form action="" id="resizeForm" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="form-container">
@@ -91,7 +88,7 @@
                             <div class="form-group">
                                 <div class="file-upload-container">
                                     <div class="header dropzone" id="fileUploadDropzone">
-                                        <input type="file" class="header2" id="files" name="files" required webkitdirectory directory multiple>
+                                        <input type="file" class="header" id="files" name="files" required webkitdirectory directory multiple>
                                         <label for="files">
                                             <div class="no-files">
                                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,31 +165,14 @@
                 </div>
             </div>
         </form>
-    </main>
-    <details>
-        <summary style="user-select: none;">What's Bonemeal<i class="fa-solid fa-question"></i></summary>
-        <div>
-            <h1>BONEMEAL</h1>
-            <p>Speed Up Your Workflow</p>
-            <h2>Who We Are</h2>
-            <p>Bonemeal is a resource created by texture enthusiasts, for texture enthusiasts. We understand the unique
-                challenges and joys of designing Minecraft texture packs. Our mission is to offer a wide range of helpful
-                tools for Minecraft texture pack devs, whether they're just starting out or already well established.
-            </p>
-            <h2>What We Do</h2>
-            <p>Bonemeal provides a toolkit specifically tailored for Minecraft texture pack creation. We offer tools to
-                simplify the process, streamline workflow, and help you achieve the results you envision.
-            </p>
-            <h2>Our Expertise</h2>
-            <p>Our team has a deep appreciation for Minecraft's visual style and a passion for empowering creators within
-                the community. We combine our knowledge of the game with technical understanding to provide tools that
-                enhance the development experience.
-            </p>
-            <br>
-            <p class="sub-title-center">"Minecraft" is a trademark of Mojang. This app is not affiliated with Mojang or Microsoft.</p>
-            <p class="sub-title-center">©&nbsp;<span id="year"></span>&nbsp;Bonemeal. All rights reserved.</p>
+        <div class="container">
+            <h1 class="text-center">Your images are growing...</h1>
+            <!-- Display Area -->
+            <div id="progress-bar">
+                <div id="progress-bar-value"></div>
+            </div>
         </div>
-    </details>
+    </main>
 </div>
 <!-- JavaScript for interactive elements -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -221,6 +201,49 @@
             }
         }
     };
+    document.getElementById('resizeForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const folderPath = document.getElementById('files').value;
+        const maxWidth = parseInt(document.querySelector('input[name="value-radio"]:checked').value.split('-')[1]);
+        const dither = document.getElementById('cbx').checked;
+
+        try {
+            await window.__TAURI__.invoke('resize_images', {
+                folderPath,
+                maxWidth,
+                dither
+            });
+            console.log('Images resized successfully!');
+            updateProgress(0); // Start progress at 0%
+            fetchProgress(); // Start fetching progress updates
+        } catch (error) {
+            console.error('Error resizing images:', error);
+        }
+    });
+
+    // Function to update the progress bar
+    function updateProgress(progress) {
+        var progressBar = document.getElementById("progress-bar-value");
+        progressBar.style.width = progress + "%";
+
+        if (progress === 100) {
+            // Redirect to the result page when progress reaches 100%
+            window.location.href = "resize-result.html";
+        }
+    }
+
+    // Fetch progress updates from the backend
+    async function fetchProgress() {
+        try {
+            const progress = await window.__TAURI__.invoke('get_progress');
+            updateProgress(progress);
+            if (progress < 100) {
+                setTimeout(fetchProgress, 1000); // Fetch progress every 1 second
+            }
+        } catch (error) {
+            console.error('Error fetching progress:', error);
+        }
+    }
 </script>
 </body>
 </html>

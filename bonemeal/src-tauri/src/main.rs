@@ -2,15 +2,25 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod console;
+mod resize;
+
+#[tauri::command]
+fn get_progress(progress: tauri::State<crate::resize::ProgressState>) -> usize {
+    progress.0.load(Ordering::SeqCst)
+}
 
 #[macro_use]
 extern crate lazy_static;
 extern crate tera;
 
 use std::collections::HashMap;
+use std::sync::atomic::Ordering;
 use tauri::Manager;
 use tera::{Context, Tera};
 use window_shadows::set_shadow;
+use crate::resize::{ProgressState, resize_images};
+use std::sync::Arc;
+use std::sync::atomic::AtomicUsize;
 
 fn page(value: &serde_json::Value, _args: &HashMap<String, serde_json::Value>) -> tera::Result<serde_json::Value> {
     if let serde_json::Value::String(s) = value {
@@ -49,6 +59,7 @@ fn main() {
         ("/settings", "settings.html"),
     ];
     tauri::Builder::default()
+        .manage(ProgressState(Arc::new(AtomicUsize::new(0))))
         .setup(move |app| {
             #[cfg(any(windows, target_os = "macos"))]
             {
@@ -91,6 +102,7 @@ fn main() {
 
             Ok(())
         })
+        .invoke_handler(tauri::generate_handler![resize_images, get_progress])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -760,9 +760,10 @@ input .header2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    position: relative;
+    position: inherit;
     flex: 1;
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -773,12 +774,17 @@ input .header2 {
 }
 
 #files {
-    top: 190px;
-    width: 723px;
+    transform: translateY(38%);
+    top: 10%;
+    width: 100%;
     border-radius: 10px;
     border-top-width: 215px;
     border-color: rgba(255, 255, 255, 0);
     opacity: 0;
+}
+
+#files:hover {
+
 }
 
 .file-upload-spacing {
@@ -806,10 +812,11 @@ input .header2 {
 .header svg {
     position: relative;
     height: 100px;
-    left: 13px;
+    left: 25%;
 }
 
 .header p {
+    position: inherit;
     text-align: center;
     color: #fff;
 }
@@ -857,6 +864,7 @@ input .header2 {
 }
 
 .form-container {
+    position: inherit;
     width: 200%;
     background-color: rgba(0, 110, 255, 0.041);
     border: 2px solid transparent;
@@ -874,7 +882,7 @@ input .header2 {
     box-shadow: 4px 4px 30px rgba(0, 0, 0, .2);
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) scale(0.6);
+    transform: translate(-30%, -65%) scale(0.75);
 }
 
 .form-container button:active {
@@ -894,7 +902,6 @@ input .header2 {
 }
 
 .form-container .form-group label {
-    display: block;
     margin-bottom: 5px;
     color: #cccccc;
     font-weight: 600;
@@ -1250,9 +1257,12 @@ div.main-tool {
 }
 
 .main2 {
+    position: inherit;
     flex: 1; /* Each column takes equal space */
     padding: 80px;
-    transform: translate(0, 0);
+    left: 50%;
+    top: 50%;
+    transform: translate(-40%, 0%);
     display: flex;
     flex-wrap: wrap;
 }
@@ -1406,6 +1416,7 @@ div.main-tool {
 }
 
 .uploaded-files {
+    visibility: hidden;
     position: fixed;
     float: left;
     left: 80%;
@@ -1454,7 +1465,7 @@ div.main-tool {
 }
 
 .radio-input {
-    --container_width: 745px;
+    --container_width: 50rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -1535,7 +1546,7 @@ div.main-tool {
 }
 
 .radio-input2 {
-    --container_width: 745px;
+    --container_width: 50rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -2213,95 +2224,13 @@ body .particletext.bubbles > .particle {
     transition-delay: 0.9s;
 }
 
-:root {
-    --white: #ffffff;
-    --light-grey: #edf0f1;
-    --violet: #885be1;
-    --dark-violet: #8446e1;
-    --black: #21232a;
-}
-
-:root {
-    --page-height: 100vh;
-    --page-width: 100vw;
-    --page-margin: 0;
-    --page-padding: 0;
-    --page-text-color: #8e9196;
-    --page-text-color-hover: rgba(255, 255, 255, 1);
-    --page-background-color: rgb(126, 65, 255);
-    --tab-display: grid;
-    --tab-background-color: rgba(255, 255, 255, 0.03);
-    --display-none: none;
-    --box-sizing: border-box;
-}
-p {
-    padding: 0 1em;
-}
-p span {
-    color: var(--page-text-color-hover);
-}
-
-tab-container {
-    display: var(--tab-display);
-    margin-top: 50px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr;
-    border: solid rgb(126, 65, 255);
-    border-radius: 2vh 0 0 2vh;
-}
-/*
-TAB CONTROLS
-Hide radios */
-input {
-    display: none;
-}
-input:checked + label {
-    color: var(--page-text-color-hover);
-    background-color: rgba(255, 255, 255, 0);
-    transition: all 250ms;
-}
-label {
-    cursor: pointer;
-    transition: color 250ms;
-    padding: 1em;
-    border-right: solid 2px var(--page-background-color);
-    background-color: var(--tab-background-color);
-    text-align: center;
-    transition: all 250ms;
-}
-label:last-of-type {
-    border: none;
-}
-label:hover {
-    color: var(--page-text-color-hover);
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-tab-content {
-    display: var(--tab-display);
-    grid-column: 1 / -1;
-}
-
-input#tabToggle01:checked ~ tab-content:not(:nth-of-type(1)),
-input#tabToggle02:checked ~ tab-content:not(:nth-of-type(2)),
-input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
-input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {
-    display: none;
-}
-
-.text-padding {
-    padding: 20px;
-}
-
-tab-container {
-    min-width: 100%;
-}
 
 
 
 .cards-list {
     position: relative;
     left: 5%;
+    transform: translateY(-50%);
     z-index: 0;
     width: 100px;
     display: flex;
