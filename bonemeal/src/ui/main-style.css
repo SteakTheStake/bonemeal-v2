@@ -1465,7 +1465,7 @@ div.main-tool {
 }
 
 .radio-input {
-    --container_width: 50rem;
+    --container_width: 60rem;
     position: relative;
     display: flex;
     align-items: center;
