@@ -35,6 +35,7 @@
       },
       "window": {
         "all": false,
+        "center": true,
         "close": true,
         "hide": true,
         "show": true,
@@ -42,7 +43,8 @@
         "minimize": true,
         "unmaximize": true,
         "unminimize": true,
-        "startDragging": true
+        "startDragging": true,
+        "setPosition": true
       }
     },
     "windows": [
